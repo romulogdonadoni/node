@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { getAll } from "../service/UserService";
 import { User } from "../model/User";
 
+
 export function listUser(req: Request, res: Response): void {
     const list = getAll();
     res.status(200).json(list);
@@ -25,5 +26,15 @@ export function createUser(req: Request, res: Response): void {
         const newUser: User = { id, name, age };
         add(newUser);
         res.status(201).json(newUser);
+    }
+}
+
+export function removeUser(req: Request, res: Response): void {
+    const id: parseInt(req.params.id);
+    const success = remove(id);
+    if (!success) {
+        res.status(404).json({ error: "User not found" });
+    } else {
+        res.status(200).json({ message: "User removed successfully." });
     }
 }
