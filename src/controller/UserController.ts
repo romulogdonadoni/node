@@ -1,5 +1,6 @@
 import { Request, Response } from "express"
 import { getAll } from "../service/UserService";
+import { User } from "../model/User";
 
 export function listUser(req: Request, res: Response): void {
     const list = getAll();
@@ -16,5 +17,13 @@ export function getUser(req: Request, res: Response): void {
 }
 
 export function createUser(req: Request, res: Response): void {
-    onst { id, name, age } = req.body
+    const { id, name, age } = req.body;
+
+    if (!id || !name || !age) {
+        res.status(400).json({ error: "Some fields are missing in the request body (id, name, age)." })
+    } else {
+        const newUser: User = { id, name, age };
+        add(newUser);
+        res.status(201).json(newUser);
+    }
 }
