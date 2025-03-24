@@ -1,0 +1,35 @@
+# Dependências do Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Builds e arquivos de saída
+dist/
+out/
+build/
+*.tsbuildinfo
+
+# Configurações do ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+*.log.*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Editor e sistema operacional
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
